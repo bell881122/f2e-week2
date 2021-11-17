@@ -1,23 +1,15 @@
-
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+// MUI
+import CssBaseline from '@mui/material/CssBaseline';
 // Custom
-import { getAuthorizationHeader } from 'src/service/_config'
-import MapView from 'src/components/Map/MapView';
+import Cycling from 'src/components/Cycling';
+import 'src/App.css'
 //--------------------
 function App() {
-  useEffect(() => {
-    (async () => await axios({
-      method: 'get',
-      url: `https://ptx.transportdata.tw/MOTC/v2/Bike/Station/Taichung?$top=12&$format=JSON`,
-      headers: getAuthorizationHeader()
-    }))().then(res => {
-      console.log(res)
-    }).catch(err => console.log(err))
-  }, []);
   return (
-    <div>
-      <MapView />
+    <div style={{padding:'10px'}}>
+      <CssBaseline />
+      <Cycling />
     </div>
   );
 }
