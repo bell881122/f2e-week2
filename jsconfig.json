@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "public": ["public"],
+            "src": ["src"]
+        }
     }
 }

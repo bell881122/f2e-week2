@@ -1,9 +1,9 @@
 
 import React, { useEffect } from 'react'
 import axios from 'axios'
-import Button from '@mui/material/Button'
 // Custom
 import { getAuthorizationHeader } from 'src/service/_config'
+import MapView from 'src/components/Map/MapView';
 //--------------------
 function App() {
   useEffect(() => {
@@ -17,7 +17,7 @@ function App() {
   }, []);
   return (
     <div>
-      <Button variant="contained">Contained</Button>
+      <MapView />
     </div>
   );
 }
