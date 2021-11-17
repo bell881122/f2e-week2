@@ -23,7 +23,7 @@ export default function CyclingMap({ markers, polyline }) {
             />
             {markers && markers.map((item, index) => (
                 <Marker key={index} position={item.position} icon={VenueLocationIcon} >
-                    <Popup>{item.name}</Popup>
+                    {item.name && <Popup>{item.name}</Popup>}
                 </Marker>
             ))}
             {polyline && <Polyline pathOptions={{ color: 'red' }} positions={polyline} />}

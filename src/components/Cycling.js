@@ -38,9 +38,11 @@ export default function Cycling() {
     }
 
     return (
-        <>
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <div style={{ position: 'absolute', top: 8, left: 8, zIndex: 401 }}>
+                {cyclingList && <CyclingList list={cyclingList} handleClick={handleClick} />}
+            </div>
             <MapView markers={markers} polyline={polyline} />
-            {cyclingList && <CyclingList list={cyclingList} handleClick={handleClick} />}
-        </>
+        </div>
     )
 }

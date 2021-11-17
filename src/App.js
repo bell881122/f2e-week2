@@ -7,7 +7,7 @@ import 'src/App.css'
 //--------------------
 function App() {
   return (
-    <div style={{padding:'10px'}}>
+    <div style={{padding:'10px', width:'100wh',height:'100vh'}}>
       <CssBaseline />
       <Cycling />
     </div>
