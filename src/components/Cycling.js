@@ -3,6 +3,7 @@ import axios from 'axios'
 // MUI
 import IconButton from '@mui/material/IconButton';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import PedalBikeIcon from '@mui/icons-material/PedalBike';
 // Custom
 import { getAuthorizationHeader } from 'src/service/_config'
 import CyclingList from 'src/components/CyclingList';
@@ -13,6 +14,7 @@ export default function Cycling() {
     const [markers, setmarkers] = useState();
     const [polyline, setpolyline] = useState();
     const [showCurrentLocation, setshowCurrentLocation] = useState();
+    const [showNearbyBikes, setshowNearbyBikes] = useState(false);
 
     useEffect(() => {
         (async () => await axios({
@@ -44,21 +46,31 @@ export default function Cycling() {
 
     return (
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-            {/* ¶€¶Ê®ÆπD¶C™Ì */}
+            {/* Ëá™Ë°åËªäÈÅìÂàóË°® */}
             <div style={{ position: 'absolute', top: 8, left: 8, zIndex: 401 }}>
                 {cyclingList && <CyclingList list={cyclingList} handleClick={handleClick} />}
             </div>
-            {/* ≤{¶b¶Ï∏m´ˆ∂s */}
-            <div style={{
-                position: 'absolute', bottom: 24, right: 4, zIndex: 401,
-                backgroundColor: '#fff', borderRadius: '50%'
-            }}>
-                <IconButton color="primary" aria-label="add to shopping cart" onClick={() => setshowCurrentLocation([])}>
-                    <GpsFixedIcon />
-                </IconButton>
+            {/* button group */}
+            <div style={{ position: 'absolute', bottom: 24, right: 4, zIndex: 401 }}>
+                <div style={{ backgroundColor: '#fff', borderRadius: '50%' }} >
+                    <IconButton color="primary" aria-label="add to shopping cart" onClick={() => setshowNearbyBikes([])}>
+                        <PedalBikeIcon />
+                    </IconButton>
+                </div>
+                <div style={{ marginTop: '8px' }} />
+                <div style={{ backgroundColor: '#fff', borderRadius: '50%' }} >
+                    <IconButton color="primary" aria-label="add to shopping cart" onClick={() => setshowCurrentLocation([])}>
+                        <GpsFixedIcon />
+                    </IconButton>
+                </div>
             </div>
-            {/* Leaflet ¶aπœ */}
-            <MapView markers={markers} polyline={polyline} showCurrentLocation={showCurrentLocation} />
+            {/* Leaflet Âú∞Âúñ */}
+            <MapView
+                markers={markers}
+                polyline={polyline}
+                showCurrentLocation={showCurrentLocation}
+                showNearbyBikes={showNearbyBikes}
+            />
         </div>
     )
 }

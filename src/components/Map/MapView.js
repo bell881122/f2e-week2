@@ -9,10 +9,10 @@ import {
     useMap,
 } from 'react-leaflet';
 // Custom
+import Markers from 'src/components/Map/Markers';
 import VenueLocationIcon from 'src/components/Map/VenueLocationIcon';
 import 'src/components/Map/MapView.css'
 //--------------------
-const icon = VenueLocationIcon();
 const hereIcon = VenueLocationIcon('here');
 
 function LocationMarker({ showCurrentLocation }) {
@@ -47,7 +47,12 @@ function SetFlyto({ flyto }) {
     return null
 }
 
-export default function CyclingMap({ markers, polyline, showCurrentLocation }) {
+export default function CyclingMap({
+    markers,
+    polyline,
+    showCurrentLocation,
+    showNearbyBikes,
+}) {
     const [flyto, setflyto] = useState();
     const center = [25.04795444238345, 121.51693473083246]; // 台北車站
 
@@ -63,13 +68,10 @@ export default function CyclingMap({ markers, polyline, showCurrentLocation }) {
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {markers && markers.map((item, index) => (
-                <Marker key={index} position={item.position} icon={icon} >
-                    {item.name && <Popup>{item.name}</Popup>}
-                </Marker>
-            ))}
+            {markers && <Markers markers={markers} />}
             {polyline && <Polyline pathOptions={{ color: 'red' }} positions={polyline} />}
             {showCurrentLocation && <LocationMarker showCurrentLocation={showCurrentLocation} />}
+            {showNearbyBikes && <Markers type={['bike']} />}
         </MapContainer >
     )
 }
