@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 // MUI
 import IconButton from '@mui/material/IconButton';
@@ -7,16 +7,18 @@ import PedalBikeIcon from '@mui/icons-material/PedalBike';
 // Custom
 import { getAuthorizationHeader } from 'src/service/_config'
 import CyclingList from 'src/components/CyclingList';
+import BikeStationInfo from 'src/components/BikeStationInfo';
 import MapView from 'src/components/Map/MapView';
 //--------------------
 export default function Cycling() {
-    const [cyclingList, setcyclingList] = useState();
-    const [markers, setmarkers] = useState();
-    const [polyline, setpolyline] = useState();
-    const [showCurrentLocation, setshowCurrentLocation] = useState();
-    const [showNearbyBikes, setshowNearbyBikes] = useState(false);
+    const [cyclingList, setcyclingList] = React.useState();
+    const [markers, setmarkers] = React.useState();
+    const [polyline, setpolyline] = React.useState();
+    const [showCurrentLocation, setshowCurrentLocation] = React.useState();
+    const [showNearbyBikes, setshowNearbyBikes] = React.useState(false);
+    const [bikeStationUid, setbikeStationUid] = React.useState('');
 
-    useEffect(() => {
+    React.useEffect(() => {
         (async () => await axios({
             method: 'get',
             url: `https://ptx.transportdata.tw/MOTC/v2/Cycling/Shape/Taipei?$top=4&$format=JSON`,
@@ -50,8 +52,14 @@ export default function Cycling() {
             <div style={{ position: 'absolute', top: 8, left: 8, zIndex: 401 }}>
                 {cyclingList && <CyclingList list={cyclingList} handleClick={handleClick} />}
             </div>
+            {bikeStationUid &&
+                <div style={{ position: 'absolute', bottom: 8, right: 8, zIndex: 401, width: '50%' }}>
+                    <BikeStationInfo bikeStationUid={bikeStationUid} />
+                </div>
+            }
+
             {/* button group */}
-            <div style={{ position: 'absolute', bottom: 24, right: 4, zIndex: 401 }}>
+            <div style={{ position: 'absolute', top: 8, right: 8, zIndex: 401 }}>
                 <div style={{ backgroundColor: '#fff', borderRadius: '50%' }} >
                     <IconButton color="primary" aria-label="add to shopping cart" onClick={() => setshowNearbyBikes([])}>
                         <PedalBikeIcon />
@@ -70,6 +78,7 @@ export default function Cycling() {
                 polyline={polyline}
                 showCurrentLocation={showCurrentLocation}
                 showNearbyBikes={showNearbyBikes}
+                setbikeStationUid={setbikeStationUid}
             />
         </div>
     )

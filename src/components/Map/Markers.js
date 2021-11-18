@@ -12,7 +12,7 @@ import { getAuthorizationHeader } from 'src/service/_config'
 //--------------------
 const icon = VenueLocationIcon();
 
-export default function Markers({ markers, type }) {
+export default function Markers({ markers, type, setbikeStationUid }) {
     const map = useMap();
     const [locations, setlocations] = React.useState(markers);
 
@@ -32,6 +32,7 @@ export default function Markers({ markers, type }) {
                     }))().then(res => {
                         const list = res.data.map(item => {
                             return {
+                                uid: item.StationUID,
                                 name: item.StationName.Zh_tw,
                                 position: [item.StationPosition.PositionLat, item.StationPosition.PositionLon],
                             }
@@ -46,7 +47,13 @@ export default function Markers({ markers, type }) {
     }, [map, type]);
 
     return locations ? locations.map((item, index) => (
-        <Marker key={index} position={item.position} icon={icon} >
+        <Marker key={index} position={item.position} icon={icon}
+            eventHandlers={{
+                click: e => {
+                    setbikeStationUid(item.uid)
+                },
+            }}
+        >
             {item.name && <Popup>{item.name}</Popup>}
         </Marker>
     )) : null

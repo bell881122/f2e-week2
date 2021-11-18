@@ -47,11 +47,12 @@ function SetFlyto({ flyto }) {
     return null
 }
 
-export default function CyclingMap({
+export default function MapView({
     markers,
     polyline,
     showCurrentLocation,
     showNearbyBikes,
+    setbikeStationUid,
 }) {
     const [flyto, setflyto] = useState();
     const center = [25.04795444238345, 121.51693473083246]; // 台北車站
@@ -71,7 +72,7 @@ export default function CyclingMap({
             {markers && <Markers markers={markers} />}
             {polyline && <Polyline pathOptions={{ color: 'red' }} positions={polyline} />}
             {showCurrentLocation && <LocationMarker showCurrentLocation={showCurrentLocation} />}
-            {showNearbyBikes && <Markers type={['bike']} />}
+            {showNearbyBikes && <Markers type={['bike']} setbikeStationUid={setbikeStationUid} />}
         </MapContainer >
     )
 }

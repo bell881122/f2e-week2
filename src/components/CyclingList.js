@@ -9,7 +9,7 @@ export default function CyclingList({ list, handleClick }) {
             onClick={() => handleClick(item)}
         >
             <h3>{item.RouteName}</h3>
-            <Divider style={{ margin: 'px auto' }} />
+            <Divider style={{ margin: '4px auto' }} />
             <div style={{ display: 'flex' }}>
                 {(item.RoadSectionStart || item.RoadSectionEnd) &&
                     <div>
@@ -28,8 +28,8 @@ export default function CyclingList({ list, handleClick }) {
                     </div>
                 }
                 <div style={{ margin: 'auto 0 auto auto', textAlign: 'center' }}>
-                    <p style={{ fontSize: '10px',paddingTop:'16px' }} >全長</p>
-                    <p style={{ fontWeight: 'bold', color:'red' }}>{item.CyclingLength} 公里</p>
+                    <p style={{ fontSize: '10px', paddingTop: '16px' }} >全長</p>
+                    <p style={{ fontWeight: 'bold', color: 'red' }}>{item.CyclingLength} 公里</p>
                 </div>
             </div>
         </Paper >
