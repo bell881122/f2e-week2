@@ -12,6 +12,28 @@ import {
 import VenueLocationIcon from 'src/components/Map/VenueLocationIcon';
 import 'src/components/Map/MapView.css'
 //--------------------
+const icon = VenueLocationIcon();
+const hereIcon = VenueLocationIcon('here');
+
+function LocationMarker({ showCurrentLocation }) {
+    const map = useMap();
+    const [position, setPosition] = useState(null);
+
+    useEffect(() => {
+        if (map && showCurrentLocation) {
+            map.locate().on("locationfound", function (e) {
+                setPosition(e.latlng);
+                map.flyTo(e.latlng, map.getZoom());
+            });
+        }
+    }, [map, showCurrentLocation]);
+
+    return position === null ? null : (
+        <Marker position={position} icon={hereIcon}>
+            <Popup>現在位置</Popup>
+        </Marker>
+    );
+}
 
 function SetFlyto({ flyto }) {
     const map = useMap();
@@ -25,7 +47,7 @@ function SetFlyto({ flyto }) {
     return null
 }
 
-export default function CyclingMap({ markers, polyline }) {
+export default function CyclingMap({ markers, polyline, showCurrentLocation }) {
     const [flyto, setflyto] = useState();
     const center = [25.04795444238345, 121.51693473083246]; // 台北車站
 
@@ -42,11 +64,12 @@ export default function CyclingMap({ markers, polyline }) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {markers && markers.map((item, index) => (
-                <Marker key={index} position={item.position} icon={VenueLocationIcon} >
+                <Marker key={index} position={item.position} icon={icon} >
                     {item.name && <Popup>{item.name}</Popup>}
                 </Marker>
             ))}
             {polyline && <Polyline pathOptions={{ color: 'red' }} positions={polyline} />}
+            {showCurrentLocation && <LocationMarker showCurrentLocation={showCurrentLocation} />}
         </MapContainer >
     )
 }

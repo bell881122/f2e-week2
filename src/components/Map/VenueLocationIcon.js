@@ -1,9 +1,10 @@
 import L from 'leaflet';
 import icon from 'src/assets/venue_location_icon.svg'
+import hereIcon from 'src/assets/here_location_icon.svg'
 
- const VenueLocationIcon = L.icon({
-    iconUrl: icon,
-    iconRetinaUrl: icon,
+const VenueLocationIcon = type => L.icon({
+    iconUrl: type === 'here' ? hereIcon : icon,
+    iconRetinaUrl: type === 'here' ? hereIcon : icon,
     iconAnchor: null,
     shadowUrl: null,
     shadowSize: null,
