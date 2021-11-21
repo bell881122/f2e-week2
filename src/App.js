@@ -1,6 +1,7 @@
 // MUI
 import CssBaseline from '@mui/material/CssBaseline'
 // Custom
+import Cycling from 'src/components/Cycling';
 import Logo from 'src/asset/logo.png'
 import 'src/App.scss'
 //--------------------
@@ -18,7 +19,7 @@ function App() {
         </div>
       </header>
       <main className="wrap">
-        App
+        <Cycling />
       </main>
     </>
   );
