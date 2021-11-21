@@ -1,0 +1,44 @@
+@import './_global.scss';
+
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    padding: 8px 20px;
+}
+
+header {
+    h1 {
+        margin-left: -4px;
+
+        img {
+            display: block;
+            margin: auto 0;
+        }
+    }
+
+    .menu {
+        color: $primary;
+        font-weight: bold;
+        margin: auto 0 auto auto;
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+main {
+    background-color: #E2E2E2;
+    flex-grow: 1;
+    width: 100%;
+}
