@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/f2e-week2/static/css/main.e33b01f5.chunk.css",
+    "main.js": "/f2e-week2/static/js/main.4d7f0d91.chunk.js",
+    "main.js.map": "/f2e-week2/static/js/main.4d7f0d91.chunk.js.map",
+    "runtime-main.js": "/f2e-week2/static/js/runtime-main.32853eee.js",
+    "runtime-main.js.map": "/f2e-week2/static/js/runtime-main.32853eee.js.map",
+    "static/css/2.68ba508b.chunk.css": "/f2e-week2/static/css/2.68ba508b.chunk.css",
+    "static/js/2.94848c0c.chunk.js": "/f2e-week2/static/js/2.94848c0c.chunk.js",
+    "static/js/2.94848c0c.chunk.js.map": "/f2e-week2/static/js/2.94848c0c.chunk.js.map",
+    "index.html": "/f2e-week2/index.html",
+    "static/css/2.68ba508b.chunk.css.map": "/f2e-week2/static/css/2.68ba508b.chunk.css.map",
+    "static/css/main.e33b01f5.chunk.css.map": "/f2e-week2/static/css/main.e33b01f5.chunk.css.map",
+    "static/js/2.94848c0c.chunk.js.LICENSE.txt": "/f2e-week2/static/js/2.94848c0c.chunk.js.LICENSE.txt",
+    "static/media/here_location_icon.a67deb53.svg": "/f2e-week2/static/media/here_location_icon.a67deb53.svg",
+    "static/media/venue_location_icon.1b60bdb7.svg": "/f2e-week2/static/media/venue_location_icon.1b60bdb7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32853eee.js",
+    "static/css/2.68ba508b.chunk.css",
+    "static/js/2.94848c0c.chunk.js",
+    "static/css/main.e33b01f5.chunk.css",
+    "static/js/main.4d7f0d91.chunk.js"
+  ]
+}
